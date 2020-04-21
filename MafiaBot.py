@@ -3,14 +3,12 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord.utils import get
-import random
+import os
 
 PREFIX = 'Mafia '
 Bot = commands.Bot(command_prefix = PREFIX)
 Bot.remove_command('help')
 #===================================
-
-#print(random.randint(1,5))
 
 #==============[ БД ]===============
 import pymysql
@@ -33,10 +31,6 @@ print(data)
 @Bot.event
 async def on_ready():
     print('Bot is already!')
-    
-@Bot.command(pass_context = True)
-async def drop(ctx):
-    await ctx.author.send('Hello world!')
 
 # Join
 @Bot.command(pass_context = True)
@@ -108,7 +102,8 @@ async def ban(ctx, member: discord.Member, *, reason = None):
         await ctx.send(f'Пользователь {member.mention} был забанен.')
 #===================================
 
-Bot.run('NzAyMTQ5MDY1MjI3MzcwNTY2.Xp73VA.sTrUP743g-k4PFFAbsqDcYzPBHY')
+token = os.environ.get('TOKEN')
+Bot.run(str(token))
 
 
 
