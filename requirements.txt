@@ -2,4 +2,5 @@ discord.py
 aiohttp
 websocket
 chardet
+pymysql
 pynacl
