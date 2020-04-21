@@ -1,6 +1,6 @@
 discord.py
 aiohttp
-websockent
+websocket
 chardet
 random
 pymysql
