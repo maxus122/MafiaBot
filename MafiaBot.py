@@ -25,7 +25,7 @@ print(countrow)
 data = a.fetchall()
 print(data)
 
-if data == 1:
+if data == (('CatDev',),):
     print('Equel')
 #===================================
 
