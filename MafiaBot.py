@@ -15,7 +15,7 @@ import pymysql
 BD = pymysql.connect(host = 'mysql51.1gb.ru', user = 'gb_x_ren_d542', password = '8084021a', db = 'gb_x_ren_d542')
 
 a = BD.cursor()
-sql = 'SELECT `FIO` from `AcMafia`;'
+sql = 'SELECT `Login` from `AcMafia`;'
 a.execute(sql)
 if sql:
     print('BD is already!')
@@ -25,7 +25,7 @@ print(countrow)
 data = a.fetchall()
 print(data)
 
-if data == (3):
+if data == 1:
     print('Equel')
 #===================================
 
