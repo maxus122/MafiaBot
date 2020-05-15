@@ -5,7 +5,7 @@ from discord.ext.commands import Bot
 from discord.utils import get
 import os
 
-PREFIX = 'Мафия - '
+PREFIX = 'Mafia '
 Bot = commands.Bot(command_prefix = PREFIX)
 Bot.remove_command('help')
 #===================================
@@ -25,7 +25,7 @@ print(countrow)
 data = a.fetchall()
 print(data)
 
-if 1 == 1:
+if data == '(3,),':
     print('Equel')
 #===================================
 
