@@ -24,6 +24,9 @@ countrow = a.execute(sql)
 print(countrow)
 data = a.fetchall()
 print(data)
+
+if data == 3:
+    print('Equel')
 #===================================
 
 #============[ Команды ]============
