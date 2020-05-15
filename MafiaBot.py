@@ -25,7 +25,7 @@ print(countrow)
 data = a.fetchall()
 print(data)
 
-if data == '((3,),)':
+if data == "((3,),)":
     print('Equel')
 #===================================
 
