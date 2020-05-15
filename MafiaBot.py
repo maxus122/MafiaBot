@@ -15,7 +15,7 @@ import pymysql
 BD = pymysql.connect(host = 'mysql51.1gb.ru', user = 'gb_x_ren_d542', password = '8084021a', db = 'gb_x_ren_d542')
 
 a = BD.cursor()
-sql = 'SELECT * from `AcMafia`;'
+sql = 'SELECT `id` from `AcMafia`;'
 a.execute(sql)
 if sql:
     print('BD is already!')
