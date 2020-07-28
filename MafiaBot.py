@@ -35,74 +35,10 @@ if data == (('CatDev',),):
 async def on_ready():
     print('Bot is already!')
 
-# Join
-@Bot.command(pass_context = True)
-async def join(ctx):
-    global voice
-    channel = ctx.message.author.voice.channel
-    voice = get(Bot.voice_clients, guild = ctx.guild)
-    await ctx.channel.purge(limit = 1)
-
-    if voice and voice.is_connected():
-        await voice.move_to('Мафия')
-    else:
-        voice = await channel.connect()
-        await ctx.send(f'Бот присоеденился к голосовому каналу "{channel}".')
-
-# Stop
-@Bot.command(pass_context = True)
-async def stop(ctx):
-    channel = ctx.message.author.voice.channel
-    voice = get(Bot.voice_clients, guild = ctx.guild)
-    await ctx.channel.purge(limit = 1)
-
-    if voice and voice.is_connected():
-        await voice.disconnect()
-        await ctx.send(f'Игра окончена.')
-        await ctx.send(f'Бот покинул голосовой канал.')
-
-
-# Help
-@Bot.command(pass_context = True)
-async def help(ctx):
-    emb = discord.Embed(title = 'Навигация по командам')
-
-    emb.add_field(name = '{}join'.format(PREFIX), value = 'Присоединение бота к чату')
-    emb.add_field(name = '{}start'.format(PREFIX), value = 'Начало игры')
-    emb.add_field(name = '{}clear'.format(PREFIX), value = 'Очистка чата')
-    emb.add_field(name = '{}kick'.format(PREFIX), value = 'Кик пользователя')
-    emb.add_field(name = '{}ban'.format(PREFIX), value = 'Бан пользователя')
-
-    await ctx.send(embed = emb)
-
 # Clear
 @Bot.command(pass_context = True)
 async def clear(ctx):
     await ctx.channel.purge()
-
-# Kick
-@Bot.command(pass_context = True)
-@commands.has_permissions(administrator = True)
-async def kick(ctx, member: discord.Member, *, reason = None):
-    await member.kick(reason = reason)
-    await ctx.channel.purge(limit = 1)
-    if reason != None:
-        await ctx.send(f'Пользователь {member.mention} был выгнан по причине "{reason}".')
-
-    if reason == None:
-        await ctx.send(f'Пользователь {member.mention} был выгнан.')
-
-# Ban
-@Bot.command(pass_context = True)
-@commands.has_permissions(administrator = True)
-async def ban(ctx, member: discord.Member, *, reason = None):
-    await member.ban(reason = reason)
-    await ctx.channel.purge(limit = 1)
-    if reason != None:
-        await ctx.send(f'Пользователь {member.mention} был забанен по причине "{reason}".')
-
-    if reason == None:
-        await ctx.send(f'Пользователь {member.mention} был забанен.')
 #===================================
 
 token = os.environ.get('TOKEN')
